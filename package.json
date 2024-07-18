@@ -1,0 +1,23 @@
+{
+  "name": "hackaton-pose-detection",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2",
+    "vite": "^5.3.4"
+  },
+  "dependencies": {
+    "@mediapipe/pose": "^0.5.1675469404",
+    "@tensorflow-models/pose-detection": "^2.1.3",
+    "@tensorflow/tfjs-backend-webgl": "^4.20.0",
+    "@tensorflow/tfjs-backend-webgpu": "^4.20.0",
+    "@tensorflow/tfjs-converter": "^4.20.0",
+    "@tensorflow/tfjs-core": "^4.20.0"
+  }
+}
