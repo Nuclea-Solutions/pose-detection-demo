@@ -37,12 +37,10 @@ async function processFrame() {
   canvas.height = video.videoHeight;
   canvas.width = video.videoWidth;
 
-  // do pose detection
   const poses = await detector.estimatePoses(video, { maxPoses: 6 });
 
   ctx!.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-  /// draw poses
   poses.forEach((pose) => {
     pose.keypoints.forEach((keypoint) => {
       ctx!.beginPath();
@@ -51,7 +49,6 @@ async function processFrame() {
       ctx!.fill();
     });
 
-    // draw unions between keypoints
     connections.forEach((connection) => {
       ctx!.beginPath();
       ctx!.moveTo(pose.keypoints[connection[0]].x, pose.keypoints[connection[0]].y);
