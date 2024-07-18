@@ -1,6 +1,9 @@
 import * as poseDetection from '@tensorflow-models/pose-detection';
+import * as tf from '@tensorflow/tfjs-core';
 // Register one of the TF.js backends.
 import '@tensorflow/tfjs-backend-webgl';
+
+await tf.ready();
 
 const detectorConfig = {
   modelType: poseDetection.movenet.modelType.MULTIPOSE_LIGHTNING,
@@ -63,23 +66,24 @@ async function processFrame() {
 }
 
 video.addEventListener('play', async () => {
-    rafId = requestAnimationFrame(processFrame);
-  });
+  rafId = requestAnimationFrame(processFrame);
+});
 
-  video.addEventListener('pause', () => {
-    if (rafId) {
-      cancelAnimationFrame(rafId);
-    }
-  });
+video.addEventListener('pause', () => {
+  if (rafId) {
+    cancelAnimationFrame(rafId);
+  }
+});
 
-  video.addEventListener('ended', () => {
-    if (rafId) {
-      cancelAnimationFrame(rafId);
-    }
-    video.play();
-  });
+video.addEventListener('ended', () => {
+  if (rafId) {
+    cancelAnimationFrame(rafId);
+  }
+  video.play();
+});
 
-  video.src = 'video-demo.mp4';
-  video.load();
+video.addEventListener('click', () => {
   video.play();
   video.volume = 0;
+});
+
